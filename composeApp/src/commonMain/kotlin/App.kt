@@ -1,41 +1,40 @@
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.rememberCoroutineScope
+import core.infrastructure.FileRepository
+import core.models.IdentityFile
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import quickid.composeapp.generated.resources.Res
-import quickid.composeapp.generated.resources.compose_multiplatform
 import ui.theme.QuickIdThemes
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 @Preview
-fun App() {
+fun App(repository: FileRepository) {
     QuickIdThemes {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            Text("Hello, Compose!")
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+        val files by repository.getFiles(null).collectAsState(emptyList())
+        val scope = rememberCoroutineScope()
+        Column {
+            Row {
+                Button(onClick = {
+                    scope.launch {
+                        val randomNumber = (0..100).random()
+                        repository.saveFile(IdentityFile.create("file$randomNumber.txt", "content$randomNumber"))
+                    }
+                }) {
+                    Text("Add file")
                 }
             }
+            files.forEach {
+                Row { Text(it.name) }
+            }
         }
+
     }
 }

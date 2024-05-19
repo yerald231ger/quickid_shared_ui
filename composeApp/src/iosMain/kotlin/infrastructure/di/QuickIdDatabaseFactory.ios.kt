@@ -4,6 +4,7 @@ import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import infrastructure.database.QuickIdDatabase
 import infrastructure.database.dbFileName
+import infrastructure.database.instantiateImpl
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -16,7 +17,14 @@ import platform.Foundation.NSUserDomainMask
 actual class QuickIdDatabaseFactory {
 
     actual fun createRoomDatabase(): QuickIdDatabase {
-       TODO()
+        val dbFile = "${fileDirectory()}/$dbFileName"
+
+        return Room.databaseBuilder<QuickIdDatabase>(
+            name = dbFile,
+            factory =  { QuickIdDatabase::class.instantiateImpl() }
+        ).setDriver(BundledSQLiteDriver())
+            .setQueryCoroutineContext(Dispatchers.IO)
+            .build()
     }
 
     @OptIn(ExperimentalForeignApi::class)

@@ -4,21 +4,18 @@ import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import infrastructure.di.AppContainer
+import infrastructure.di.QuickIdDatabaseFactory
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var container : AppContainer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        container = AppContainer(QuickIdDatabaseFactory(application))
         setContent {
-            App()
+            App(container.fileRepository)
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
 }

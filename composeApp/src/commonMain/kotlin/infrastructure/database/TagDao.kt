@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TagDao {
     @Insert
-    fun insert(tag: Tag)
+    suspend fun insert(tag: Tag)
 
     @Query("SELECT * FROM tags WHERE fileId = :fileId")
-    suspend fun getAllAsFlow(fileId: Int): List<Tag>
+    fun getAllAsFlow(fileId: Int): Flow<List<Tag>>
 
 }
