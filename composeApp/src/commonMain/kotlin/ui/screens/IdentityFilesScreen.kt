@@ -10,12 +10,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import core.models.IdentityFile
 import ui.components.FileListItem
 import ui.components.ScreenHeader
 
 @Composable
-fun IdentityFilesScreen() {
+fun IdentityFilesScreen(
+    navController: NavController
+) {
 
     Box(
         modifier = Modifier

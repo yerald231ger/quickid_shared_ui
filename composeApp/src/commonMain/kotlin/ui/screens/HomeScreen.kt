@@ -13,13 +13,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import core.models.IdentityFile
 import ui.components.FileItem
-import ui.components.ScreenHeader
 import ui.components.TitleContainer
 
 @Composable
 fun HomeScreen(
+    navController: NavController
 ) {
     Box(
         modifier = Modifier

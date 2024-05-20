@@ -20,6 +20,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import ui.icons.Camera
 import ui.icons.Description
 import ui.icons.Inventory2
+import ui.navigation.AppNavigation
 import ui.screens.HomeScreen
 import ui.theme.QuickIdThemes
 
@@ -27,40 +28,6 @@ import ui.theme.QuickIdThemes
 @Preview
 fun App(repository: FileRepository) {
     QuickIdThemes {
-        val files by repository.getFiles(null).collectAsState(emptyList())
-        Scaffold(
-            bottomBar = {
-                BottomAppBar(
-                    actions = {
-                        IconButton(onClick = { /* do something */ }) {
-                            Icon(Icons.Filled.Home, contentDescription = "Localized description")
-                        }
-                        IconButton(onClick = { /* do something */ }) {
-                            Icon(
-                                Icons.Filled.Inventory2,
-                                contentDescription = "Localized description",
-                            )
-                        }
-                        IconButton(onClick = { /* do something */ }) {
-                            Icon(
-                                Icons.Default.Settings,
-                                contentDescription = "Localized description",
-                            )
-                        }
-                    },
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            onClick = { /* do something */ },
-                            containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
-                            elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                        ) {
-                            Icon(Icons.Filled.Add, "Localized description")
-                        }
-                    }
-                )
-            },
-        ) { _ ->
-            HomeScreen()
-        }
+        AppNavigation()
     }
 }

@@ -17,6 +17,17 @@ compose-compiler = "1.5.11"
 
 skie = "0.6.2"
 
+#Lifecycle viewmodel
+lifecycle-viewmodel = "2.8.0-rc01"
+
+#Navigation Compose
+navigation-compose = "2.7.0-alpha03"
+
+#Koin Dependency Injection
+koin = "3.6.0-alpha3"
+koin-compose = "3.6.0-alpha3"
+koin-compose-multiplatform = "1.2.0-alpha3"
+
 # Room database
 ksp = "1.9.23-1.0.19"
 room = "2.7.0-alpha02"
@@ -53,6 +64,17 @@ androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
+# Koin Dependency Injection
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose-multiplatform" }
+
+# Navigation Compose
+navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+
+# Lifecycle Compose for View Models
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle-viewmodel" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
