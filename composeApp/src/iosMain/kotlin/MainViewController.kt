@@ -3,7 +3,12 @@ import androidx.compose.ui.window.ComposeUIViewController
 import infrastructure.di.AppContainer
 import infrastructure.di.QuickIdDatabaseFactory
 
-fun MainViewController() = ComposeUIViewController {
+@Suppress("FunctionName")
+fun MainViewController() = ComposeUIViewController(
+    configure = {
+        KoinInitializer().init()
+    }
+) {
     val repository = remember { AppContainer(QuickIdDatabaseFactory()).fileRepository }
     AppContainer(QuickIdDatabaseFactory())
     App(repository)
