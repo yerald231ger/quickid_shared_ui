@@ -38,6 +38,7 @@ sqlite = "2.5.0-SNAPSHOT"
 kotlinx-datetime = "0.6.0-RC.2"
 kotlinx-coroutines = "1.8.0"
 uiToolingPreviewAndroid = "1.6.7"
+playServicesMlkitDocumentScanner = "16.0.0-beta1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -75,6 +76,7 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 
 # Lifecycle Compose for View Models
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle-viewmodel" }
+play-services-mlkit-document-scanner = { group = "com.google.android.gms", name = "play-services-mlkit-document-scanner", version.ref = "playServicesMlkitDocumentScanner" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
