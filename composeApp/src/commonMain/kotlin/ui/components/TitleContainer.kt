@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +26,7 @@ fun TitleContainer(
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .height(150.dp)
             .padding(bottom = 8.dp)
     ) {
         Column {
@@ -39,7 +41,7 @@ fun TitleContainer(
                 ) {
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.titleSmall,
+                        style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier
                             .align(Alignment.CenterStart)
                     )

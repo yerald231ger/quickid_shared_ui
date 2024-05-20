@@ -1,40 +1,66 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import core.infrastructure.FileRepository
-import core.models.IdentityFile
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import ui.icons.Camera
+import ui.icons.Description
+import ui.icons.Inventory2
+import ui.screens.HomeScreen
 import ui.theme.QuickIdThemes
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 @Preview
 fun App(repository: FileRepository) {
     QuickIdThemes {
         val files by repository.getFiles(null).collectAsState(emptyList())
-        val scope = rememberCoroutineScope()
-        Column {
-            Row {
-                Button(onClick = {
-                    scope.launch {
-                        val randomNumber = (0..100).random()
-                        repository.saveFile(IdentityFile.create("file$randomNumber.txt", "content$randomNumber"))
+        Scaffold(
+            bottomBar = {
+                BottomAppBar(
+                    actions = {
+                        IconButton(onClick = { /* do something */ }) {
+                            Icon(Icons.Filled.Home, contentDescription = "Localized description")
+                        }
+                        IconButton(onClick = { /* do something */ }) {
+                            Icon(
+                                Icons.Filled.Inventory2,
+                                contentDescription = "Localized description",
+                            )
+                        }
+                        IconButton(onClick = { /* do something */ }) {
+                            Icon(
+                                Icons.Default.Settings,
+                                contentDescription = "Localized description",
+                            )
+                        }
+                    },
+                    floatingActionButton = {
+                        FloatingActionButton(
+                            onClick = { /* do something */ },
+                            containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                            elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                        ) {
+                            Icon(Icons.Filled.Add, "Localized description")
+                        }
                     }
-                }) {
-                    Text("Add file")
-                }
-            }
-            files.forEach {
-                Row { Text(it.name) }
-            }
+                )
+            },
+        ) { _ ->
+            HomeScreen()
         }
-
     }
 }
