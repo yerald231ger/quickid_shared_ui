@@ -15,8 +15,6 @@ junit = "4.13.2"
 kotlin = "1.9.23"
 compose-compiler = "1.5.11"
 
-skie = "0.6.2"
-
 #Lifecycle viewmodel
 lifecycle-viewmodel = "2.8.0-rc01"
 
@@ -38,7 +36,9 @@ sqlite = "2.5.0-SNAPSHOT"
 kotlinx-datetime = "0.6.0-RC.2"
 kotlinx-coroutines = "1.8.0"
 
+# Other libraries
 uiToolingPreviewAndroid = "1.6.7"
+skie = "0.6.2"
 
 
 [libraries]
