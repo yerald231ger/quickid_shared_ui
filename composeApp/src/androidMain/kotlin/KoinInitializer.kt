@@ -5,7 +5,6 @@ import infrastructure.di.QuickIdDatabaseFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 @Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
